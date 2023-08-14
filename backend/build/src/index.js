@@ -1,10 +1,16 @@
 "use strict";
-const express = require("express");
-const app = express();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const path = require("path");
+const app = (0, express_1.default)();
 const port = 4000;
 app.get("/", (req, res) => {
     res.send("Hello world!");
 });
+app.use("/uploads", express_1.default.static(path.join(__dirname, "../../uploads")));
 app.listen(port, () => {
     console.log(`${port}번에서 실행이 되었습니다.`);
 });
